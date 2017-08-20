@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0.0">
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" ifconfig="product_list/general/page_url" module="productlist">
+                <label helper="productlist/data/getProductListTitle" />
+                <url helper="productlist/data/getProductListUri" />
+                <title helper="productlist/data/getProductListTitle" />
+                <prepare />
+                <urlParams />
+                <position>120</position>
+            </action>
+        </reference>
+    </default>
+    <productlist_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/productlist/flexslider.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/productlist/jquery.flexslider-min.js</name></action>			
+		</reference>
+        <reference name="content">
+            <block type="productlist/index" name="productlist_index" template="productlist/index.phtml" />
+        </reference>
+    </productlist_index_index>
+</layout>

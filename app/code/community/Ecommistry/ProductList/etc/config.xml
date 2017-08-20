@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Ecommistry
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * @category    Ecommistry
+ * @package     Ecommistry_ProductList
+ * @license     GNU General Public License v3.0
+ */
+-->
+<config>
+    <modules>
+        <Ecommistry_ProductList>
+            <version>1.0.0</version>
+        </Ecommistry_ProductList>
+    </modules>
+    <frontend>
+        <routers>
+            <productlist>
+                <use>standard</use>
+                <args>
+                    <module>Ecommistry_ProductList</module>
+                    <frontName>productlist</frontName>
+                </args>
+            </productlist>
+        </routers>
+        <layout>
+            <updates>
+                <productlist>
+                    <file>productlist.xml</file>
+                </productlist>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <productlist>
+                <class>Ecommistry_ProductList_Helper</class>
+            </productlist>
+        </helpers>
+        <blocks>
+            <productlist>
+                <class>Ecommistry_ProductList_Block</class>
+            </productlist>
+        </blocks>
+		<models>
+			<productlist>
+                <class>Ecommistry_ProductList_Model</class>
+            </productlist>
+		</models>
+        <resources>
+            <productlist_setup>
+                <setup>
+                    <module>Ecommistry_ProductList</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </productlist_setup>
+            <productlist_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </productlist_write>
+            <productlist_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </productlist_read>
+        </resources>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <productlist>
+                        <class>Ecommistry_ProductList_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </productlist>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+    <default>
+        <product_list>
+            <general>
+                <enabled>1</enabled>
+                <product_count>10</product_count>
+                <column_count>5</column_count>
+                <view_mode>grid</view_mode>
+                <page_title>Ecommistry Products</page_title>
+                <page_url>ecommistry</page_url>
+                <login_required_error_message>Please Login to Access Page</login_required_error_message>
+            </general>
+        </product_list>
+    </default>
+</config>
