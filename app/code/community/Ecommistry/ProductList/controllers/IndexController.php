@@ -45,22 +45,22 @@ class Ecommistry_ProductList_IndexController extends Mage_Core_Controller_Front_
 		if(! Mage::helper('customer')->isLoggedIn()){
 			Mage::getSingleton('customer/session')->addError(
 				/**
-				 Add \ in string to escape (') and (") sign
+				 * Add \ in string to escape (') and (") sign
 				 */
 				Mage::helper('core')->quoteEscape(
 					/**
-					 Get Error message from Configuration field
+					 * Get Error message from Configuration field
 					 */
 					$ecommistryHelper->__(Mage::getStoreConfig(Ecommistry_ProductList_Helper_Data::LOGIN_REQUIRED_ERROR_MESSAGE,Mage::app()->getStore()))
 				)
 			);
 			/**
-			 Redirect User to Login page
+			 * Redirect User to Login page
 			 */
             Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login', array('referer' => Mage::helper('core')->urlEncode($ecommistryHelper->getProductListUri()))));
         }
 		/**
-		 Load Product List Page
+		 * Load Product List Page
 		 */
 		$this->loadLayout();   
 		$this->getLayout()->getBlock("head")->setTitle($ecommistryHelper->getProductListTitle());
